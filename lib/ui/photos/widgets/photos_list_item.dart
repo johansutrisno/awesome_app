@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:evermos/core/config_size.dart';
 import 'package:evermos/models/photo.dart';
+import 'package:evermos/ui/photos/view/photo_detail.dart';
 import 'package:flutter/material.dart';
 
 import 'bottom_loader.dart';
@@ -11,12 +13,12 @@ class PhotosListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    SizeConfig().init(context);
     return Material(
       child: ListTile(
         leading: SizedBox(
-          width: size.width / 5,
-          height: size.width / 5,
+          width: SizeConfig.safeBlockHorizontal * 25,
+          height: SizeConfig.safeBlockHorizontal * 25,
           child: CachedNetworkImage(
             imageUrl: photo.src.small,
             placeholder: (context, url) => ProgressLoader(),
@@ -32,7 +34,12 @@ class PhotosListItem extends StatelessWidget {
           vertical: 8,
           horizontal: 8,
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PhotoDetail(photo: photo)));
+        },
       ),
     );
   }

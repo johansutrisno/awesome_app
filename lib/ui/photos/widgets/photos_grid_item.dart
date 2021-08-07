@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:evermos/core/config_size.dart';
 import 'package:evermos/models/photo.dart';
 import 'package:evermos/ui/photos/widgets/bottom_loader.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,12 +12,12 @@ class PhotosGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    SizeConfig().init(context);
     return Material(
       child: ListTile(
         title: SizedBox(
-          width: size.width,
-          height: size.width,
+          width: SizeConfig.safeBlockHorizontal * 100,
+          height: SizeConfig.safeBlockHorizontal * 100,
           child: CachedNetworkImage(
             imageUrl: photo.src.small,
             placeholder: (context, url) => ProgressLoader(),

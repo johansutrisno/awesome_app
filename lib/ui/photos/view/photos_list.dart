@@ -44,7 +44,7 @@ class _PhotosListState extends State<PhotosList> {
                   title: Text('Awesome App'),
                   flexibleSpace: FlexibleSpaceBar(
                     background: CachedNetworkImage(
-                      imageUrl: state.photos[0].src.small,
+                      imageUrl: state.photos[0].src.large2x,
                       placeholder: (context, url) => ProgressLoader(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                       fit: BoxFit.fill,
@@ -126,68 +126,5 @@ class _PhotosListState extends State<PhotosList> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
     return currentScroll >= maxScroll;
-  }
-}
-
-class SABT extends StatefulWidget {
-  final Widget child;
-
-  const SABT({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  _SABTState createState() {
-    return new _SABTState();
-  }
-}
-
-class _SABTState extends State<SABT> {
-  late ScrollPosition _position;
-  late bool _visible;
-
-  @override
-  void dispose() {
-    _removeListener();
-    super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _removeListener();
-    _addListener();
-  }
-
-  void _addListener() {
-    _position = Scrollable.of(context)!.position;
-    _position.addListener(_positionListener);
-    _positionListener();
-  }
-
-  void _removeListener() {
-    _position.removeListener(_positionListener);
-  }
-
-  void _positionListener() {
-    final FlexibleSpaceBarSettings settings = context
-        .dependOnInheritedWidgetOfExactType() as FlexibleSpaceBarSettings;
-    print(settings.minExtent);
-    bool visible = settings.currentExtent > settings.minExtent + 10;
-    if (_visible != visible) {
-      setState(() {
-        _visible = visible;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: Duration(milliseconds: 300),
-      opacity: _visible ? 1 : 0,
-      child: widget.child,
-    );
   }
 }
