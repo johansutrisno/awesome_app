@@ -9,9 +9,6 @@ class PhotosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Photos'),
-      ),
       body: BlocProvider(
         create: (context) => PhotoBloc()..add(PhotoFetched()),
         child: PhotosList(),
