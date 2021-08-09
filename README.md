@@ -1,16 +1,37 @@
-# evermos
+# Awesome App
 
-A new Flutter project.
+Awesome App Project dibuat untuk memenuhi submission technical test di Evermos.
 
-## Getting Started
+## How to use
 
-This project is a starting point for a Flutter application.
+**Langkah 1:**
 
-A few resources to get you started if this is your first Flutter project:
+Download atau clone repo ini menggunakan link dibawah ini:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```
+https://github.com/zubairehman/flutter-boilerplate-project.git
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Step 2:**
+
+Buka terminal di folder project kemudian execute command dibawah ini untuk mengimport dependencies:
+
+```
+flutter pub get 
+```
+
+**Step 3:**
+
+Kemudian jalankan command dibawah ini untuk menjalankan aplikasi:
+
+```
+flutter run
+```
+
+## Package & Tools Used
+
+* [Cached network image](https://pub.dev/packages/cached_network_image)
+* [Dio](https://pub.dev/packages/dio)
+* [Dio Http Cache](https://pub.dev/packages/dio_http_cache)
+* [Equatable](https://pub.dev/packages/equatable)
+* [Flutter BLoC](https://pub.dev/packages/flutter_bloc)
