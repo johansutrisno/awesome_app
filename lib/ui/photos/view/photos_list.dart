@@ -45,7 +45,6 @@ class _PhotosListState extends State<PhotosList> {
                   flexibleSpace: FlexibleSpaceBar(
                     background: CachedNetworkImage(
                       imageUrl: state.photos[0].src.large2x,
-                      placeholder: (context, url) => ProgressLoader(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                       fit: BoxFit.fill,
                     ),
@@ -72,7 +71,7 @@ class _PhotosListState extends State<PhotosList> {
                     ),
                   ],
                 ),
-                _listMode == true
+                _listMode == false
                     ? SliverGrid(
                         delegate: SliverChildBuilderDelegate(
                           (context, index) {

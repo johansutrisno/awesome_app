@@ -15,8 +15,6 @@ void main() {
     late PhotoBloc photoBloc;
 
     var mockPhotos = Photo.fromJson(fakeResponse);
-    var extraMockPhotos = Photo.fromJson(extraFakeResponse);
-    var emptyMockPhotos = Photo.fromJson(emptyResponse);
 
     setUp(() {
       repository = MockRepository();

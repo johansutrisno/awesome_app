@@ -20,7 +20,7 @@ class PhotosGridItem extends StatelessWidget {
           height: SizeConfig.safeBlockHorizontal * 100,
           child: CachedNetworkImage(
             imageUrl: photo.src.small,
-            placeholder: (context, url) => ProgressLoader(),
+            // placeholder: (context, url) => ProgressLoader(),
             errorWidget: (context, url, error) => Icon(Icons.error),
             fit: BoxFit.fill,
           ),

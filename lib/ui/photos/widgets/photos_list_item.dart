@@ -21,7 +21,7 @@ class PhotosListItem extends StatelessWidget {
           height: SizeConfig.safeBlockHorizontal * 25,
           child: CachedNetworkImage(
             imageUrl: photo.src.small,
-            placeholder: (context, url) => ProgressLoader(),
+            // placeholder: (context, url) => ProgressLoader(),
             errorWidget: (context, url, error) => Icon(Icons.error),
             fit: BoxFit.fill,
           ),
