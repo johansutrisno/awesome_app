@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:evermos/models/photo.dart';
 import 'package:evermos/ui/photos/bloc/photo_bloc.dart';
 import 'package:evermos/ui/photos/view/photos_list.dart';
-import 'package:evermos/ui/photos/widgets/bottom_loader.dart';
+import 'package:evermos/ui/photos/widgets/progress_loader.dart';
 import 'package:evermos/ui/photos/widgets/photos_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

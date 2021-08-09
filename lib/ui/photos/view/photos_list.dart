@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evermos/ui/photos/bloc/photo_bloc.dart';
-import 'package:evermos/ui/photos/widgets/bottom_loader.dart';
+import 'package:evermos/ui/photos/widgets/progress_loader.dart';
 import 'package:evermos/ui/photos/widgets/photos_grid_item.dart';
 import 'package:evermos/ui/photos/widgets/photos_list_item.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,7 @@ class _PhotosListState extends State<PhotosList> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          _listMode = true;
+                          _listMode = false;
                         });
                       },
                       child: Icon(Icons.grid_view),
@@ -63,7 +63,7 @@ class _PhotosListState extends State<PhotosList> {
                       child: InkWell(
                         onTap: () {
                           setState(() {
-                            _listMode = false;
+                            _listMode = true;
                           });
                         },
                         child: Icon(Icons.view_list),

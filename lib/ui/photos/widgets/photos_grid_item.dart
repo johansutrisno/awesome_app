@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evermos/core/config_size.dart';
 import 'package:evermos/models/photo.dart';
-import 'package:evermos/ui/photos/widgets/bottom_loader.dart';
+import 'package:evermos/ui/photos/view/photo_detail.dart';
+import 'package:evermos/ui/photos/widgets/progress_loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,14 +26,17 @@ class PhotosGridItem extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        isThreeLine: true,
-        subtitle: Text(photo.url),
-        dense: true,
+        subtitle: Text(''),
         contentPadding: EdgeInsets.symmetric(
           vertical: 8,
           horizontal: 8,
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PhotoDetail(photo: photo)));
+        },
       ),
     );
   }
