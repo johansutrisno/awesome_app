@@ -1,16 +1,16 @@
-class Photo {
-  int page;
-  int perPage;
-  List<Photos> photos;
-  int totalResults;
-  String nextPage;
+import 'package:equatable/equatable.dart';
+
+class Photo extends Equatable {
+  final int page;
+  final int perPage;
+  final List<Photos> photos;
+  final int totalResults;
 
   Photo({
     required this.page,
     required this.perPage,
     required this.photos,
     required this.totalResults,
-    required this.nextPage,
   });
 
   factory Photo.fromJson(Map<String, dynamic> json) {
@@ -27,7 +27,6 @@ class Photo {
       perPage: json['per_page'],
       photos: photos,
       totalResults: json['total_results'],
-      nextPage: json['next_page'],
     );
   }
 
@@ -37,22 +36,24 @@ class Photo {
     data['per_page'] = this.perPage;
     data['photos'] = this.photos.map((v) => v.toJson()).toList();
     data['total_results'] = this.totalResults;
-    data['next_page'] = this.nextPage;
     return data;
   }
+
+  @override
+  List<Object?> get props => [page, perPage, photos, totalResults];
 }
 
-class Photos {
-  int id;
-  int width;
-  int height;
-  String url;
-  String photographer;
-  String photographerUrl;
-  int photographerId;
-  String avgColor;
-  Src src;
-  bool liked;
+class Photos extends Equatable {
+  final int id;
+  final int width;
+  final int height;
+  final String url;
+  final String photographer;
+  final String photographerUrl;
+  final int photographerId;
+  final String avgColor;
+  final Src src;
+  final bool liked;
 
   Photos({
     required this.id,
@@ -96,17 +97,31 @@ class Photos {
     data['liked'] = this.liked;
     return data;
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        width,
+        height,
+        url,
+        photographer,
+        photographerUrl,
+        photographerId,
+        avgColor,
+        src,
+        liked,
+      ];
 }
 
-class Src {
-  String original;
-  String large2x;
-  String large;
-  String medium;
-  String small;
-  String portrait;
-  String landscape;
-  String tiny;
+class Src extends Equatable {
+  final String original;
+  final String large2x;
+  final String large;
+  final String medium;
+  final String small;
+  final String portrait;
+  final String landscape;
+  final String tiny;
 
   Src({
     required this.original,
@@ -144,4 +159,16 @@ class Src {
     data['tiny'] = this.tiny;
     return data;
   }
+
+  @override
+  List<Object?> get props => [
+        original,
+        large2x,
+        large,
+        medium,
+        small,
+        portrait,
+        landscape,
+        tiny,
+      ];
 }

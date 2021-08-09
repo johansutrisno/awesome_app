@@ -11,9 +11,9 @@ part 'photo_event.dart';
 part 'photo_state.dart';
 
 class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
-  PhotoBloc() : super(const PhotoState());
+  PhotoBloc({required this.repository}) : super(PhotoState());
 
-  Repository _repository = RepositoryImpl();
+  final Repository repository;
 
   @override
   Stream<PhotoState> mapEventToState(
@@ -29,21 +29,23 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
 
     try {
       if (state.status == PhotoStatus.initial) {
-        final photo = await _repository.getPhoto();
+        final photo = await repository.getPhoto();
         return state.copyWith(
           status: PhotoStatus.success,
           photos: photo.photos,
           hasReachedMax: false,
+          page: 1,
         );
       }
-      final photo = await _repository.getPhoto(state.page + 1);
+      final photo = await repository.getPhoto(state.page + 1);
       return photo.photos.isEmpty
           ? state.copyWith(hasReachedMax: true)
           : state.copyWith(
               status: PhotoStatus.success,
               photos: List.of(state.photos)..addAll(photo.photos),
               page: photo.page,
-              hasReachedMax: false);
+              hasReachedMax: false,
+            );
     } on Exception {
       return state.copyWith(status: PhotoStatus.failure);
     }

@@ -3,7 +3,7 @@ part of 'photo_bloc.dart';
 enum PhotoStatus { initial, success, failure }
 
 class PhotoState extends Equatable {
-  const PhotoState({
+  PhotoState({
     this.status = PhotoStatus.initial,
     this.photos = const <Photos>[],
     this.page = 1,

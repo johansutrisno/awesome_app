@@ -20,8 +20,10 @@ class RemoteRepository {
       var response = await dio.get('curated?per_page=10&page=${page ?? ''}');
       return Photo.fromJson(response.data);
     } on DioError catch (e) {
+      print(e.toString());
       throw ServerError.withError(error: e);
     } catch (e) {
+      print(e.toString());
       throw Exception('$e');
     }
   }

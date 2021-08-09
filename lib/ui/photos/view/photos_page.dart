@@ -1,3 +1,4 @@
+import 'package:evermos/repository/repository_impl.dart';
 import 'package:evermos/ui/photos/bloc/photo_bloc.dart';
 import 'package:evermos/ui/photos/view/photos_list.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ class PhotosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => PhotoBloc()..add(PhotoFetched()),
+        create: (context) =>
+            PhotoBloc(repository: RepositoryImpl())..add(PhotoFetched()),
         child: PhotosList(),
       ),
     );
