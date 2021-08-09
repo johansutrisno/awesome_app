@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evermos/core/config_size.dart';
 import 'package:evermos/models/photo.dart';
 import 'package:evermos/ui/photos/view/photo_detail.dart';
-import 'package:evermos/ui/photos/widgets/progress_loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

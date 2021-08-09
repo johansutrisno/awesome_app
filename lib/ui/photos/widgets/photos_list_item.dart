@@ -4,7 +4,6 @@ import 'package:evermos/models/photo.dart';
 import 'package:evermos/ui/photos/view/photo_detail.dart';
 import 'package:flutter/material.dart';
 
-import 'progress_loader.dart';
 
 class PhotosListItem extends StatelessWidget {
   const PhotosListItem({Key? key, required this.photo}) : super(key: key);

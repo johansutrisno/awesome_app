@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:evermos/models/photo.dart';
 import 'package:evermos/repository/repository.dart';
-import 'package:evermos/repository/repository_impl.dart';
 
 part 'photo_event.dart';
 
