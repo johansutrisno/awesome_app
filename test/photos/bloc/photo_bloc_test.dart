@@ -31,7 +31,7 @@ void main() {
 
     group('PhotoFetched', () {
       blocTest<PhotoBloc, PhotoState>(
-        'emits nothing when posts has reached maximum amount',
+        'emits nothing when photos has reached maximum amount',
         build: () => photoBloc,
         seed: () => PhotoState(hasReachedMax: true),
         act: (bloc) => bloc.add(PhotoFetched()),
@@ -40,7 +40,7 @@ void main() {
     });
 
     blocTest<PhotoBloc, PhotoState>(
-      'emits successful status when http fetches initial posts',
+      'emits successful status when http fetches initial photos',
       build: () {
         when(() => repository.getPhoto()).thenAnswer((_) async {
           return Future.value(mockPhotos);

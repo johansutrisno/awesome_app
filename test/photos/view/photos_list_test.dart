@@ -76,17 +76,17 @@ void main() {
       expect(find.text('failed to fetch photos'), findsOneWidget);
     });
 
-    testWidgets('renders 5 photos ', (tester) async {
+    testWidgets('renders 2 photos ', (tester) async {
       when(() => photoBloc.state).thenReturn(PhotoState(
         status: PhotoStatus.success,
-        photos: mockPhotos.photos.getRange(0, 5).toList(),
+        photos: mockPhotos.photos.getRange(0, 3).toList(),
         hasReachedMax: false,
       ));
       await tester.pumpPhotosList(photoBloc);
-      expect(find.byType(PhotosListItem), findsNWidgets(5));
+      expect(find.byType(PhotosListItem), findsNWidgets(2));
     });
 
-    testWidgets('does not render bottom loader when post max is reached',
+    testWidgets('does not render bottom loader when photos max is reached',
         (tester) async {
       when(() => photoBloc.state).thenReturn(PhotoState(
         status: PhotoStatus.success,
@@ -97,7 +97,7 @@ void main() {
       expect(find.byType(ProgressLoader), findsNothing);
     });
 
-    testWidgets('fetches more posts when scrolled to the bottom',
+    testWidgets('fetches more photos when scrolled to the bottom',
         (tester) async {
       when(() => photoBloc.state).thenReturn(
         PhotoState(
@@ -108,7 +108,7 @@ void main() {
         ),
       );
       await tester.pumpPhotosList(photoBloc);
-      await tester.drag(find.byType(PhotosList), const Offset(0, 1000));
+      await tester.drag(find.byType(PhotosList), const Offset(0, -800));
       verify(() => photoBloc.add(PhotoFetched())).called(1);
     });
   });
